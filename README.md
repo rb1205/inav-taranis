@@ -6,7 +6,7 @@ A LUA telemetry script forked from the very fine [LuaPilot](https://github.com/i
 
 The script displays the current flight mode, battery voltage, signal RSSI, distance from home position (if available) along with some basic telemetry data like altitude, vertical speed, GPS satellites, timer and more. It also displays the last GPS position received, useful when you have to recover your craft after a crash.
 
-It provides audible feedbacks when the FC enters and exits some status (arm, gps lock, autonomis flight, ready to arm, failsafe, home reset) and for low/critical battery voltage. You can customize the alarms by editing the WAV files in the SCRIPTS/SOUNDS directory, make sure you're using WAV files with a [format compatible to OpenTX](https://opentx.gitbooks.io/manual-for-opentx-2-2/content/advanced/audio.html) or they won't play. The audible feedbacks will play regardless if the GUI is displayed or not.
+It provides audible feedbacks when the FC enters and exits some status (arm, gps lock, autonomous flight, ready to arm, failsafe, home reset) and for low/critical battery voltage. You can customize the alarms by editing the WAV files in the SCRIPTS/SOUNDS directory, make sure you're using WAV files with a [format compatible to OpenTX](https://opentx.gitbooks.io/manual-for-opentx-2-2/content/advanced/audio.html) or they won't play. The audible feedbacks will play regardless if the GUI is displayed or not.
 
 It works with OpenTX 2.12 and later, including 2.2, and any version of inav. It has also been updated with the recent changes to SmartPort telemetry in inav 1.8.
 
