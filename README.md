@@ -1,14 +1,14 @@
 # Readme
 
-A LUA telemetry script derived from the very fine [LuaPilot](https://github.com/ilihack/LuaPilot_Taranis_Telemetry) to work with SmartPort telemetry data from [inav](https://github.com/iNavFlight/inav) on Taranis.
+A LUA telemetry script forked from the very fine [LuaPilot](https://github.com/ilihack/LuaPilot_Taranis_Telemetry) to work with SmartPort telemetry data from [inav](https://github.com/iNavFlight/inav) on the FrSky Taranis RC radio.
 
 ![Screenshot](ss_inav-taranis.png)
 
-The script displays the current flight mode, the battery voltage, the RSSI signal feedback, the distance from home position (if available) along with some basic telemetry data like height, GPS satellites, a timer and more. It also displays the last GPS position received, useful when you have to recover your craft after a crash.
+The script displays the current flight mode, battery voltage, signal RSSI, distance from home position (if available) along with some basic telemetry data like altitude, vertical speed, GPS satellites, timer and more. It also displays the last GPS position received, useful when you have to recover your craft after a crash.
 
-It provides some audible feedbacks: armed/disarmed, entered/exited failsafe, GPS lock acquired/lost, started/ended autonomus flight, ready to arm, home reset, low/critical battery. You can customize the alarms by editing the WAV files in the SCRIPTS/SOUNDS directory, make sure you're using WAV files with a [format compatible to OpenTX](https://opentx.gitbooks.io/manual-for-opentx-2-2/content/advanced/audio.html) or they won't play. The audible feedbacks will play regardless if the GUI is displayed or not.
+It provides audible feedbacks when the FC enters and exits some status (arm, gps lock, autonomis flight, ready to arm, failsafe, home reset) and for low/critical battery voltage. You can customize the alarms by editing the WAV files in the SCRIPTS/SOUNDS directory, make sure you're using WAV files with a [format compatible to OpenTX](https://opentx.gitbooks.io/manual-for-opentx-2-2/content/advanced/audio.html) or they won't play. The audible feedbacks will play regardless if the GUI is displayed or not.
 
-This script works with OpenTX 2.2 and has been updated with the recent changes to SPort telemetry in inav 1.8.
+It works with OpenTX 2.12 and later, including 2.2, and any version of inav. It has also been updated with the recent changes to SmartPort telemetry in inav 1.8.
 
 # Installation
 
@@ -22,5 +22,5 @@ This script works with OpenTX 2.2 and has been updated with the recent changes t
 * Search *0420* sensor, edit it and change the name to *Dist* and unit to **m**
 * In the telemetry display assign *Script* and *inav* to a screen.
 
-Done! To view the script's screen go to the main screen and long push the "Page" button to get to the telemetry pages.  The audible feedbacks will work regardless if you're viewing the script screen or not, as long as the script is selected in the model menu as explained in the procedure above.
+Done! To view the script screen go to the main screen and long push the "Page" button to get to the telemetry pages.  The audible feedbacks will work regardless if you're on the script screen or not, as long as the script is selected in the model menu as explained in the installation procedure above.
 
