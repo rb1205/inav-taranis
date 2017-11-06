@@ -194,7 +194,7 @@ local function draw()
 	end
 
 	--title
-	local fmode
+	local fmode=""
 	local fmodef=DBLSIZE
 	if not flags.telemetry then
 		fmode=								"No Telemetry"
@@ -203,9 +203,6 @@ local function draw()
 		if flags.arm_ready then fmode=		"Ready"
 		elseif flags.arm_block then 
 			fmodef=fmodef+BLINK+INVERS
-			fmode=							"Safety lock"		
-		else	
-			fmodef=fmodef+INVERS	
 			fmode=							"Arm blocked"
 		end
 	elseif flags.failsafe then 
