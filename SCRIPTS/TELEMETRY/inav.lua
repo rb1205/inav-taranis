@@ -40,14 +40,6 @@ local function init_func()
 	Vbatt=nil
 end
 
-local function calc_gps_hdistance(point,ref)
-	--simplified distance calculation assuming small (~10km max) distances. Measures the straight line connecting the points.
-	local lat = (point.lat + ref.lat) * 0.0087266462599716 --calculate mean latitude
-	local dlon= 111300 * math.cos(lat) * (point.lon - ref.lon)
-	local dlat = 111300 * (point.lat - ref.lat)
-	return math.sqrt(dlon^2+dlat^2)
-end
-
 local function parse_data()
 	local flags={telemetry=true}
 	for field,mask in pairs(masks) do
@@ -254,14 +246,8 @@ local function draw()
 	drawText(124, 46, "Sats: ",SMLSIZE)
 	drawText(getLastPos(), 42, flags.gpssats or "", MIDSIZE)
 
-	--dist
-	if last_gps and home_gps then
-		local d=calc_gps_hdistance(last_gps,home_gps)
-		if d<1000 then d=tostring(math.floor(d)).."m"
-		else d=formatnum(d/1000,2,"km")
-		end
-		drawText(186-2*#d,3, d)
-	end
+	--distance
+	drawChannel(180,3,"Dist",0)
 
 	--lastcoord
 	if last_gps then
