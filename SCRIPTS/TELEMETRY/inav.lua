@@ -85,13 +85,13 @@ local function bg_func()
 		end
 
 		if flags.gpsfix==false and was.gpsfix then 
-			playFile("/SCRIPTS/SOUNDS/gpslost.wav")
+			playFile("/SCRIPTS/INAV_TARANIS/gpslost.wav")
 		elseif flags.gpsfix and was.gpsfix==false then 
-			playFile("/SCRIPTS/SOUNDS/gpsback.wav")
+			playFile("/SCRIPTS/INAV_TARANIS/gpsback.wav")
 		end
 
 		if not persistent.warmed and flags.arm_ready and flags.gpshome then
-			playFile("/SCRIPTS/SOUNDS/ready.wav")
+			playFile("/SCRIPTS/INAV_TARANIS/ready.wav")
 			persistent.warmed=true
 		end
 
@@ -103,31 +103,31 @@ local function bg_func()
 
 
 		if flags.failsafe and not was.failsafe then
-			playFile("/SCRIPTS/SOUNDS/fsalarm.wav")
+			playFile("/SCRIPTS/INAV_TARANIS/fsalarm.wav")
 		elseif was.failsafe and flags.failsafe==false then
-			playFile("/SCRIPTS/SOUNDS/fsover.wav")
+			playFile("/SCRIPTS/INAV_TARANIS/fsover.wav")
 		end
 
 		if flags.navrth or flags.navwp or (flags.althold and flags.poshold) then
 			if not persistent.auto then 
-				playFile("/SCRIPTS/SOUNDS/autop.wav")
+				playFile("/SCRIPTS/INAV_TARANIS/autop.wav")
 				persistent.auto=true
 			end
 		else
 			if persistent.auto then
-				playFile("/SCRIPTS/SOUNDS/manual.wav") 
+				playFile("/SCRIPTS/INAV_TARANIS/manual.wav") 
 				persistent.auto=false
 			end
 		end 
 
 		if flags.homereset and not was.homereset then
-			playFile("/SCRIPTS/SOUNDS/homereset.wav")
+			playFile("/SCRIPTS/INAV_TARANIS/homereset.wav")
 		end
 
 		if flags.armed and not was.armed then 
-			playFile("/SCRIPTS/SOUNDS/armed.wav")
+			playFile("/SCRIPTS/INAV_TARANIS/armed.wav")
 		elseif flags.armed==false and was.armed then 
-			playFile("/SCRIPTS/SOUNDS/dearmed.wav") 
+			playFile("/SCRIPTS/INAV_TARANIS/dearmed.wav") 
 		end
 
 		was=flags
@@ -136,10 +136,10 @@ local function bg_func()
 	if Vbatt and Vbatt<WARN_V and Vbatt>NOBAT_V then --moving average (around 10 seconds)
 		if Vbatt<CRIT_V and getTime()-(persistent.Vwarn_last or 0)>500 then --5 seconds for battcrit
 			persistent.Vwarn_last=getTime()
-			playFile("/SCRIPTS/SOUNDS/batcrit.wav")	
+			playFile("/SCRIPTS/INAV_TARANIS/batcrit.wav")	
 		elseif getTime()-(persistent.Vwarn_last or 0)>2000 then --20 seconds for lowbatt
 			persistent.Vwarn_last=getTime()
-			playFile("/SCRIPTS/SOUNDS/batlow.wav")
+			playFile("/SCRIPTS/INAV_TARANIS/batlow.wav")
 		end
 	end
 end
@@ -158,7 +158,7 @@ local function draw()
 	local getLastPos=lcd.getLastPos
  
 	--batt
-	lcd.drawPixmap(1, 3, "/SCRIPTS/IMAGES/battery.bmp")
+	lcd.drawPixmap(1, 3, "/SCRIPTS/INAV_TARANIS/battery.bmp")
 	local i = 38
 	while (i > 0) do 
 		lcd.drawLine(6, 12 + i, 26, 12 +i, SOLID, GREY_DEFAULT)
@@ -187,7 +187,7 @@ local function draw()
 		else
 			rxpercent=0
 		end
-		lcd.drawPixmap(164, 6, "/SCRIPTS/IMAGES/RSSI"..math.ceil(rxpercent*0.1)..".bmp")
+		lcd.drawPixmap(164, 6, "/SCRIPTS/INAV_TARANIS/RSSI"..math.ceil(rxpercent*0.1)..".bmp")
 		drawChannel(188, 56, "RSSI", GREY_DEFAULT) 
 	else
 		drawText(188, 56, "No Data", GREY_DEFAULT) 
